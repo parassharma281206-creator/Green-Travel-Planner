@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Green Travel Planner 🌱</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="logo">
+                <span class="logo-icon">🌍</span>
+                <span class="logo-text">GreenTrip Planner</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#planner">Planner</a>
+                <a href="#insights">Insights</a>
+                <a href="#tips">Eco Tips</a>
+            </nav>
+            <button class="toggle-theme-btn" id="themeToggle" aria-label="Toggle dark mode">
+                ☀️
+            </button>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Plan smarter, travel greener.</h1>
+                <p>
+                    Compare travel options by <span class="highlight">CO₂ emissions</span>,
+                    and discover eco-friendly alternatives for your daily commute or long trips.
+                </p>
+                <ul class="hero-bullets">
+                    <li>🚆 See which mode is the greenest for your distance</li>
+                    <li>🚴 Get suggestions for walking, cycling, public transport & EVs</li>
+                    <li>🌱 Track how much CO₂ you can avoid with better choices</li>
+                </ul>
+            </div>
+            <div class="hero-card">
+                <h2>Quick Eco Score</h2>
+                <p class="hero-mini-text">
+                    Make one small change today, and see your impact.
+                </p>
+                <div class="hero-score">
+                    <div class="score-number" id="heroScore">--</div>
+                    <div class="score-label">Green Score (0–100)</div>
+                </div>
+                <p class="hero-tip" id="heroTip">
+                    Start by planning your first green trip below 👇
+                </p>
+            </div>
+        </section>
+
+        <!-- Planner Section -->
+        <main id="planner" class="planner-section">
+            <div class="planner-card">
+                <h2>Green Travel Planner</h2>
+                <p class="section-subtitle">
+                    Enter your trip details and we’ll suggest eco-friendly travel alternatives.
+                </p>
+
+                <form id="tripForm" class="form-grid">
+                    <div class="form-group">
+                        <label for="fromInput">From</label>
+                        <input type="text" id="fromInput" placeholder="e.g. Home, College, Office" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="toInput">To</label>
+                        <input type="text" id="toInput" placeholder="e.g. Market, Coaching, Another City" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="distanceInput">Approx. Distance (km)</label>
+                        <input type="number" id="distanceInput" min="0.5" step="0.1" placeholder="e.g. 5" required />
+                        <small>Tip: You can check distance in Google Maps and type here.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purposeSelect">Trip Purpose</label>
+                        <select id="purposeSelect">
+                            <option value="daily">Daily commute</option>
+                            <option value="casual">Casual outing</option>
+                            <option value="work">Work / Business</option>
+                            <option value="long">Long journey</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="primary-btn">
+                        Calculate Green Alternatives
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results -->
+            <section id="results" class="results-section hidden">
+                <div class="results-header">
+                    <h2>Recommended Green Travel Options</h2>
+                    <p id="resultsSummary"></p>
+                </div>
+
+                <div class="results-grid" id="resultsGrid">
+                    <!-- JS will inject mode cards here -->
+                </div>
+
+                <div class="stats-panel" id="statsPanel">
+                    <!-- JS will inject stats here -->
+                </div>
+            </section>
+
+            <!-- Recent Trips -->
+            <section id="recentTrips" class="recent-section hidden">
+                <div class="recent-header">
+                    <h2>Recent Planned Trips</h2>
+                    <p>See how your choices are getting greener over time.</p>
+                </div>
+                <div id="recentList" class="recent-list">
+                    <!-- JS will inject recent trips here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Insights -->
+        <section id="insights" class="insights-section">
+            <h2>Why Green Travel Matters</h2>
+            <div class="insights-grid">
+                <article class="insight-card">
+                    <h3>💨 Cut CO₂ Emissions</h3>
+                    <p>
+                        Transport is one of the biggest contributors to climate change.
+                        Switching from a solo petrol car ride to public transport can reduce
+                        per-person emissions by more than half for many trips.
+                    </p>
+                </article>
+                <article class="insight-card">
+                    <h3>🧠 Health & Well-being</h3>
+                    <p>
+                        Walking and cycling add physical activity to your routine, improving
+                        heart health, mood, and focus — perfect for students and professionals.
+                    </p>
+                </article>
+                <article class="insight-card">
+                    <h3>💰 Save Money</h3>
+                    <p>
+                        Fuel is expensive. Buses, metro, or car-pooling often cost much less
+                        per kilometre, especially for regular commutes.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Eco Tips -->
+        <section id="tips" class="tips-section">
+            <h2>Simple Eco Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>1. Prefer Public Transport</h3>
+                    <p>
+                        For most city trips, metro/bus has far lower emissions per person
+                        than individual cars and bikes.
+                    </p>
+                </div>
+                <div class="tip-card">
+                    <h3>2. Combine Errands</h3>
+                    <p>
+                        Plan your work, coaching, and shopping in one trip instead of three
+                        separate trips to reduce total kilometres.
+                    </p>
+                </div>
+                <div class="tip-card">
+                    <h3>3. Car-pool When Possible</h3>
+                    <p>
+                        Sharing a ride with 3–4 people divides emissions and cost, making it
+                        much greener than travelling alone.
+                    </p>
+                </div>
+                <div class="tip-card">
+                    <h3>4. Choose EVs or CNG</h3>
+                    <p>
+                        When you must use a vehicle, prefer electric or CNG options if
+                        available in your city.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>♻️ Built for a Sustainable Future • Green Travel Planner</p>
+            <p class="footer-small">
+                Hackathon demo – no real-time maps or live traffic used.
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
